@@ -1,0 +1,55 @@
+:root{
+    --bg-color: rgb(48, 24, 28);
+    --text-color: red;
+    --text-font: Lucida Console, Monaco, monospace;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: var(--text-font);
+    color: var(--text-color)
+}
+
+h2, h3, h4 {
+    color: var(--text-color);
+    font-family: var(--text-font);
+}
+
+.middle{
+    position: fixed;
+    text-shadow: 3px 1px black;
+    z-index: 2;
+    background-color: rgba(48, 24, 28, 0.5);
+}
+
+.top {
+    display: flex;
+    justify-content: center;
+}
+
+.ogien {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    z-index: 0;
+    width: 100%;
+    filter:brightness(0.62)
+}
+
+.arlecchino {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    z-index: 1;
+}
+
+input {
+    background-color: black;
+    color: white;
+}
+
+button {
+    background-color: black;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

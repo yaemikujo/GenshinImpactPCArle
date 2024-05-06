@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css.css">
+    <title>Main site</title>
+</head>
+<body>
+    <article class="top">
+        <img src="https://media.tenor.com/hJLZN9h-1joAAAAi/arlecchino-genshin-impact.gif" alt="1" size="90%">
+        <img src="cooltext457657317671304.gif" alt="gif" sizes="90%">
+        <img src="https://media.tenor.com/hJLZN9h-1joAAAAi/arlecchino-genshin-impact.gif" alt="1" size="90%">
+
+    </article><br>
+
+    <article>
+        <h2 style="text-shadow: 3px 1px black">Primo counter</h2>
+        <form class="middle">
+            <h3>Aktualna liczba</h3>
+            <p>Wishy: <input type="number" id="wish"></p>
+            <p>Primo: <input type="number" id="primogems"></p>
+            <hr>
+            <h3>Nagrody do wybranej wersji</h3>
+            <p>Daily Commissions: 150 x <input type="number" id="komisje" placeholder="days"></p>
+            <p>Stardust Exchange: 800 x <input type="number" id="stardust" placeholder="months until awaited ver"></p>
+            <p>Spiral Abyss: 450 x <input type="number" id="abyss" placeholder="number of Abyss' done"></p>
+            <p>Ile Upcoming Version streamów jeszcze: 300 x <input type="number" id="stream" placeholder="upcoming streams"></p>
+            <p>Ile jeszcze aktualizacji? [z tą w której się wishuje] <input type="number" id="aktu" placeholder="upcoming updates"></p>
+            <p>Ile primo masz w niezrobionych questach? <input type="number" id="questy" placeholder="primo z questów"></p>
+            <hr>
+            <h3>Nadchodzące eventy</h3>
+            <p>Ile wersji jeszcze zostało? [nie licząc aktualnej] <input type="number" id="wersja" placeholder="upcoming versions"></p>
+            <input type="checkbox" id="phase1">
+            <label for="phase1">Banner postaci w pierwszej połowie</label> 
+            <p>Wybierz ile eventów w aktualnej wersji zrobiłeś:</p>
+            <input type="checkbox" id="eventmain">
+            <label for="eventmain"> Main event</label> 
+            <input type="checkbox" id="eventsub1">
+            <label for="eventsub1"> Sub-event 1</label> 
+            <input type="checkbox" id="eventsub2">
+            <label for="eventsub2"> Sub-event 2</label> 
+            <input type="checkbox" id="eventsub3">
+            <label for="eventsub2"> Sub-event 3</label><br><br>
+            <button id="policz" onclick="return wynikFunkcja()">Policz ilość primo.</button>
+            <hr>
+            <h3>Przewidywana liczba primo: </h3> <h4 id="wynik"></h4>
+            <h3>Przewidywana liczba wishy: </h3> <h4 id="wynikwishe"></h4>
+            <h3>Średnia liczba 5* (średnia 77 pity): </h3> <h4 id="pitysrednie"></h4>
+        </form>
+    </article>
+
+    <img src="arlecchinopng.png" alt="Arlecchino" size="90%" class="arlecchino">
+    <img src="ogien.gif" alt="Ogien" size="200%" class="ogien">
+</body>
+<script>
+    document.getElementById("policz").addEventListener("click", wynikFunkcja)
+
+    function wynikFunkcja(){
+        var wishe = Number((document.getElementById("wish").value * 160));
+        var primo = Number(document.getElementById("primogems").value);
+        var komisje = Number((document.getElementById("komisje").value) * 150);        
+        var stardust = Number((document.getElementById("stardust").value) * 800);
+        var abyss = Number((document.getElementById("abyss").value) * 600);
+        var stream = Number((document.getElementById("stream").value) * 300);
+        var aktu = Number((document.getElementById("aktu").value) * 600);
+        var wersje = Number((document.getElementById("wersja").value));
+        var questy = Number(document.getElementById("questy").value);
+
+        var checkBox1 = document.getElementById("eventmain");
+        var checkBox2 = document.getElementById("eventsub1");
+        var checkBox3 = document.getElementById("eventsub2");
+        var checkBox4 = document.getElementById("eventsub3");
+        var checkBox5 = document.getElementById("phase1");
+
+        if (checkBox1.checked == true){
+                var eventmain1 = 0;
+            } else {
+                var eventmain1 = 1000;
+            }
+
+        if (checkBox2.checked == true){
+                var eventsub1 = 0;
+            } else {
+                var eventsub1 = 420;
+            }
+
+        if (checkBox3.checked == true){
+                var eventsub2 = 0;
+            } else {
+                var eventsub2 = 420;
+            }
+
+        if (checkBox4.checked == true){
+                var eventsub3 = 0;
+            } else {
+                var eventsub3 = 420;
+            }
+        
+        if (checkBox5.checked == true){
+                var wersje = wersje-1130;
+                alert("Od całości primo z eventów z wersji w której wishujesz została odjęta średnia połowa primo (1130), ponieważ wishujesz w pierwszej połowie.")
+            }
+        
+
+        var wynik = wishe + primo + komisje + stardust + abyss + stream + aktu + wersje + eventmain1 + eventsub1 + eventsub2 + eventsub3 + questy;
+        document.getElementById("wynik").innerHTML = wynik;
+        document.getElementById("wynikwishe").innerHTML = Math.floor(wynik/160);
+        document.getElementById("pitysrednie").innerHTML = Math.floor((Math.floor(wynik/160)) / 77);
+        return false;
+    }
+
+</script>
+</html>
